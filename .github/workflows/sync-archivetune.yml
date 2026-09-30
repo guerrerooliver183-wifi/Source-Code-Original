@@ -19,15 +19,15 @@ jobs:
       - name: Create target repository and synchronize release
         env:
           # Required for creating another repository and pushing to it.
-          # When this workflow is copied, add a PAT with repo permissions as REPO_SYNC_TOKEN.
-          SYNC_TOKEN: ${{ secrets.REPO_SYNC_TOKEN }}
+          # When this workflow is copied, add a PAT with repo permissions as GIT_TOKEN.
+          SYNC_TOKEN: ${{ secrets.GIT_TOKEN }}
           REPO_OWNER: ${{ github.repository_owner }}
         shell: bash
         run: |
           set -euo pipefail
 
           if [[ -z "${SYNC_TOKEN:-}" ]]; then
-            echo "::error::Configure the REPO_SYNC_TOKEN secret with a token that can create and write repositories."
+            echo "::error::Configure the GIT_TOKEN secret with a token that can create and write repositories."
             exit 1
           fi
 
