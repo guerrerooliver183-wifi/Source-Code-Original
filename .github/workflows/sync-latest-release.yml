@@ -1,4 +1,4 @@
-name: ArchiveTune - Sync latest stable release
+name: Sync latest stable release
 
 on:
   schedule:
@@ -81,5 +81,5 @@ jobs:
             echo "No changes detected; target is already synchronized."
             exit 0
           fi
-          git commit -m "Sync ArchiveTune ${tag}"
+          git commit -m "Sync latest stable release ${tag}"
           git push origin HEAD:main
